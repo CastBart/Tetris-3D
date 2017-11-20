@@ -10,13 +10,19 @@ public class BlockCreator : MonoBehaviour {
 
 
     public GameObject[] blocks;
+
+    GameObject disaplyVersion;
+    
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        Grid.next = Random.Range(0, blocks.Length);
         createBlock();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 
@@ -25,8 +31,17 @@ public class BlockCreator : MonoBehaviour {
     /// </summary>
     public void createBlock()
     {
-        int i = Random.Range(0, blocks.Length);
-
-        Instantiate(blocks[i], transform.position, Quaternion.identity);
+        //create the new block that moves down
+        Instantiate(blocks[Grid.next], transform.position, Quaternion.identity);
+       
+        Grid.next = Random.Range(0, blocks.Length);
+        //destroy the old display block
+        Destroy(disaplyVersion);
+        //create the display block(next block)
+        disaplyVersion = Instantiate(blocks[Grid.next], new Vector3(-7.5f, 5, 0), Quaternion.identity);
+        //disable scripts for movement
+        disaplyVersion.GetComponent<Blocks>().enabled = false;
     }
+   
+    
 }

@@ -11,6 +11,7 @@ public class Blocks : MonoBehaviour {
             Debug.Log("GAME OVER");
             Destroy(gameObject);
         }
+        
     }
 	
 	// Update is called once per frame
@@ -89,6 +90,10 @@ public class Blocks : MonoBehaviour {
 
             lastFall = Time.time;
         }
+
+      
+       
+
     }
 
     bool validGrid()
