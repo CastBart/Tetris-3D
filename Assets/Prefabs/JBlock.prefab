@@ -38,6 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4181239421225962}
   - component: {fileID: 114568700440465824}
+  - component: {fileID: 114103032670096666}
   m_Layer: 0
   m_Name: JBlock
   m_TagString: Untagged
@@ -372,6 +373,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114103032670096666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1163998315586618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b262fcae3ce86604fa9ea68bb95b2427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114568700440465824
 MonoBehaviour:
   m_ObjectHideFlags: 1
