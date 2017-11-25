@@ -90,33 +90,33 @@ public class Blocks : MonoBehaviour {
             lastFall = Time.time;
 
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            // Modify position
-            transform.position += new Vector3(0, -0.1f, 0);
+        //else if (Input.GetKey(KeyCode.DownArrow))
+        //{
+        //    // Modify position
+        //    transform.position += new Vector3(0, -0.1f, 0);
 
-            // See if valid
-            if (validGrid())
-            {
-                // It's valid. Update grid.
-                updateGrid();
-            }
-            else
-            {
-                // It's not valid. revert.
-                transform.position += new Vector3(0, 0.1f, 0);
+        //    // See if valid
+        //    if (validGrid())
+        //    {
+        //        // It's valid. Update grid.
+        //        updateGrid();
+        //    }
+        //    else
+        //    {
+        //        // It's not valid. revert.
+        //        transform.position += new Vector3(0, 0.1f, 0);
 
-                // Clear filled horizontal lines
-                Grid.deleteFullRows();
+        //        // Clear filled horizontal lines
+        //        Grid.deleteFullRows();
 
-                // Spawn next Group
-                FindObjectOfType<BlockCreator>().createBlock();
+        //        // Spawn next Group
+        //        FindObjectOfType<BlockCreator>().createBlock();
 
-                // Disable script
-                enabled = false;
-            }
-            lastFall = Time.time;
-        }
+        //        // Disable script
+        //        enabled = false;
+        //    }
+        //    lastFall = Time.time;
+        //}
 
 
 
