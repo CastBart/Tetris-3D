@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Blocks : MonoBehaviour {
     float lastFall = 0;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    public AudioSource moveBlockSound;
+    public AudioSource rotateBlockSound;
+
+    void Start () {
         if (!validGrid())
         {
             Debug.Log("GAME OVER");
@@ -16,9 +19,12 @@ public class Blocks : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+       
         // Move Left
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            moveBlockSound.Stop();
+            moveBlockSound.Play();
             // Modify position
             transform.position += new Vector3(-1, 0, 0);
 
@@ -34,6 +40,8 @@ public class Blocks : MonoBehaviour {
         // Move Right
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            moveBlockSound.Stop();
+            moveBlockSound.Play();
             // Modify position
             transform.position += new Vector3(1, 0, 0);
 
@@ -49,6 +57,8 @@ public class Blocks : MonoBehaviour {
         // Rotate
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            rotateBlockSound.Stop();
+            rotateBlockSound.Play();
             transform.Rotate(0, 0, -90);
 
             // See if valid
@@ -64,6 +74,8 @@ public class Blocks : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.DownArrow) ||
                  Time.time - lastFall >= 1)
         {
+            moveBlockSound.Stop();
+            moveBlockSound.Play();
             // Modify position
             transform.position += new Vector3(0, -1, 0);
 

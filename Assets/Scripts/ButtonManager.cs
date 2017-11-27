@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour {
 
-    public void playbtn(string lvl)
+    public void SwitchScene(string lvl)
     {
         SceneManager.LoadScene(lvl);
     }
