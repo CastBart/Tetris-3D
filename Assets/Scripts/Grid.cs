@@ -15,16 +15,16 @@ public class Grid : MonoBehaviour {
 
     public static int width = 10;
     public static int next = 0;
-    public static int score = 0;
     public static int lines = 0;
     public static int level = 1;
     public static int height = 20;
+    public static int tempScore = 0;
     public static List<GameObject> allBlocks = new List<GameObject>();
     public static Transform[,] grid = new Transform[width, height];
+    public GameObject test;
 
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -122,7 +122,8 @@ public class Grid : MonoBehaviour {
                 decreaseRowsAbove(y + 1);
                 --y;
                 Grid.lines++;
-                Grid.score += 80;
+                Grid.tempScore += 80;
+                GameControllerScript.score += 80;
             }
         }
     }
