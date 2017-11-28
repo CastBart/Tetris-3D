@@ -58,7 +58,7 @@ public class Blocks : MonoBehaviour {
         }
 
         // Rotate
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.UpArrow) && tag != "O Block") //if we pressed the up arrow and this block is not an O Block
         {
             rotateBlockSound.Stop();
             rotateBlockSound.Play();
