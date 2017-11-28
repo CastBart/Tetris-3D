@@ -1,13 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class musicVolume : MonoBehaviour {
-    public AudioSource music;
+
+    public static float musicVol = 0.5f;
+    public static float sfxVol = 0.5f;
+   // public Slider musicVol;
 	// Use this for initialization
 	void Start () {
-        music.GetComponent<AudioSource>();
-        music.volume = PlayerPrefs.GetFloat("MusicVolumeLevel",0);
+
 	}
 
+    void OnLoadScene()
+    {
+        //getObjectWithTag("game Controller").getComponent<AudioSource>().volume = musicVolume.music.Vol;
+    }
 }

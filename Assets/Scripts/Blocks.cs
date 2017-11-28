@@ -7,12 +7,15 @@ public class Blocks : MonoBehaviour {
     // Use this for initialization
     public AudioSource moveBlockSound;
     public AudioSource rotateBlockSound;
-
+    
     void Start () {
+        moveBlockSound.volume = musicVolume.sfxVol;
+        rotateBlockSound.volume = musicVolume.sfxVol;
         if (!validGrid())
         {
             Debug.Log("GAME OVER");
             Destroy(gameObject);
+       
         }
         
     }
