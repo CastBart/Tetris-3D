@@ -10,6 +10,8 @@ public class BorderScalar : MonoBehaviour {
     int currentProcessedIndex;
     int currentChild;
     float scaleSpeed;
+    Vector3 scaleDesired;
+    float currentPercentage;
 
     // Use this for initialization
     void Start ()
@@ -21,62 +23,71 @@ public class BorderScalar : MonoBehaviour {
         processedTransforms = new int[childTransforms.Length]; //create our processed transform array
 
         currentProcessedIndex = 0;
-        scaleSpeed = 0.25f;
+        scaleSpeed = 22.5f;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        bool fullyScaled = true;
-
-        //if the currently chosen child is not scale dup then scale them up
-        if (childTransforms[currentChild].localScale.x < 1)
+        if (Time.timeScale > 0)
         {
-            childTransforms[currentChild].localScale = new Vector3(childTransforms[currentChild].localScale.x + scaleSpeed, childTransforms[currentChild].localScale.y + scaleSpeed, childTransforms[currentChild].localScale.z + scaleSpeed);
-        }
-        else if(childTransforms[currentChild].localScale.x >= 1)
-        {
-            bool gotNewIndex = false;
+            bool fullyScaled = true;
 
-            //Add the current child index to our processed array
-            processedTransforms[currentProcessedIndex] = currentChild;
-
-            currentProcessedIndex++; //increase our index
-
-            while (gotNewIndex == false)
+            //if the currently chosen child is not scaled up then scale them up
+            if (childTransforms[currentChild].localScale.x < 1)
             {
-                bool foundValue = false;
+                childTransforms[currentChild].localScale = new Vector3(childTransforms[currentChild].localScale.x + scaleSpeed * Time.deltaTime, childTransforms[currentChild].localScale.y + scaleSpeed * Time.deltaTime, childTransforms[currentChild].localScale.z + scaleSpeed * Time.deltaTime);
 
-                currentChild = Random.Range(0, childTransforms.Length); //get a new index for our children transforms
-
-                for (int i = 0; i < currentProcessedIndex; i++)
+                if(childTransforms[currentChild].localScale.x >= 1.0f)
                 {
-                    if (processedTransforms[i] == currentChild)
+                    childTransforms[currentChild].localScale = new Vector3(1, 1, 1);
+                }
+            }
+            else if (childTransforms[currentChild].localScale.x >= 1.0f)
+            {
+                bool gotNewIndex = false;
+
+                //Add the current child index to our processed array
+                processedTransforms[currentProcessedIndex] = currentChild;
+
+                currentProcessedIndex++; //increase our index
+
+                while (gotNewIndex == false)
+                {
+                    bool foundValue = false;
+
+                    currentChild = Random.Range(0, childTransforms.Length); //get a new index for our children transforms
+
+                    for (int i = 0; i < currentProcessedIndex; i++)
                     {
-                        foundValue = true;
+                        if (processedTransforms[i] == currentChild)
+                        {
+                            foundValue = true;
+                        }
+                    }
+
+                    if (foundValue == false)
+                    {
+                        gotNewIndex = true;
                     }
                 }
+            }
 
-                if(foundValue == false)
+            foreach (Transform child in childTransforms)
+            {
+                if (child.localScale.x < 1)
                 {
-                    gotNewIndex = true;
+                    fullyScaled = false;
+                    break;
                 }
             }
-        }
 
-        foreach(Transform child in childTransforms)
-        {
-            if(child.localScale.x < 1)
+            //If all boxes are scaled then disable this script
+            if (fullyScaled)
             {
-                fullyScaled = false;
+                blockCreator.GetComponent<BlockCreator>().enabled = true; //enable our block creator script
+                GetComponent<BorderScalar>().enabled = false;
             }
-        }
-
-        //If all boxes are scaled then disable this script
-        if(fullyScaled)
-        {
-            blockCreator.GetComponent<BlockCreator>().enabled = true; //enable our block creator script
-            GetComponent<BorderScalar>().enabled = false;
         }
 	}
 }

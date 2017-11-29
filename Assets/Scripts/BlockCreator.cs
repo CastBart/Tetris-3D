@@ -11,7 +11,7 @@ public class BlockCreator : MonoBehaviour {
 
     public GameObject[] blocks;
 
-    GameObject disaplyVersion;
+    GameObject displayVersion;
     
 	// Use this for initialization
 	void Start ()
@@ -33,14 +33,16 @@ public class BlockCreator : MonoBehaviour {
     {
         //create the new block that moves down
         Instantiate(blocks[Grid.next], transform.position, Quaternion.identity);
-       
+
+
+
         Grid.next = Random.Range(0, blocks.Length);
         //destroy the old display block
-        Destroy(disaplyVersion);
+        Destroy(displayVersion);
         //create the display block(next block)
-        disaplyVersion = Instantiate(blocks[Grid.next], new Vector3(-7.5f, 5, 0), Quaternion.identity);
+        displayVersion = Instantiate(blocks[Grid.next], new Vector3(-7.5f, 5, 0), Quaternion.identity);
         //disable scripts for movement
-        disaplyVersion.GetComponent<Blocks>().enabled = false;
+        displayVersion.GetComponent<Blocks>().enabled = false;
     }
    
     

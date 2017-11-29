@@ -6,13 +6,19 @@ using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
-    bool paused;
+    public static bool paused = false;
     public Text pauseText;
+    public Button pauseBtn;
+    public Button restartBtn;
+    public Button exitBtn;
+
     void Start()
     {
-        pauseText.GetComponent<Text>();
         paused = false;
-        pauseText.enabled = false;
+
+        //if our timescale is not 1 then reset it
+        if (Time.timeScale != 1)
+            Time.timeScale = 1;
     }
     public void SwitchScene(string lvl)
     {
@@ -20,24 +26,34 @@ public class ButtonManager : MonoBehaviour
     }
     public void Restart()
     {
-        Application.LoadLevel(Application.loadedLevel);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        paused = false;
+        SceneManager.LoadScene("main"); //loads the scene called 'main'
     }
     public void PauseGame()
     {
-        paused = !paused;
+        paused = !paused; //negate our bool
+
+        //If paused is true then set the text of our pause button to continue and our timescale to 0
         if (paused == true)
         {
-            pauseText.enabled = true;
             Time.timeScale = 0;
+            pauseText.text = "Continue";
         }
+        //otherwise set it to pause and set teh timescale to 1
         else
         {
-            pauseText.enabled = false;
+
+            pauseText.text = "Pause";
             Time.timeScale = 1;
         }
     }
-    public void exit()
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("menu");
+    }
+
+    //Closes the game
+    public void Exit()
     {
         Application.Quit();
     }
