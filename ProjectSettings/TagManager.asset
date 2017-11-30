@@ -8,6 +8,9 @@ TagManager:
   - SFX Slider
   - Music Slider
   - O Block
+  - ExplosionParticle
+  - Undefined
+  - hi
   layers:
   - Default
   - TransparentFX

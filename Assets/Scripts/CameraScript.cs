@@ -30,7 +30,7 @@ public class CameraScript : MonoBehaviour {
             if (transform.position != gamePos)
             {
                 transform.position = Vector3.Lerp(transform.position, gamePos, 0.1f);
-                if (Vector3.Distance(gamePos, transform.position) <= 1)
+                if (Vector3.Distance(gamePos, transform.position) <= 0.01f)
                 {
                     transform.position = gamePos;
                 }

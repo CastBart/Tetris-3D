@@ -14,6 +14,9 @@ public class Grid : MonoBehaviour {
 
 
     public static int width = 10;
+    public static bool spawn = false;
+    public static int m_i = 0;
+    public static int m_y = 0;
     public static int next = 0;
     public static int lines = 0;
     public static int level = 1;
@@ -22,6 +25,7 @@ public class Grid : MonoBehaviour {
     public static List<GameObject> allBlocks = new List<GameObject>();
     public static Transform[,] grid = new Transform[width, height];
     public GameObject test;
+    public GameObject particle;
 
     // Use this for initialization
     void Start () {
@@ -56,6 +60,9 @@ public class Grid : MonoBehaviour {
     {
         for(int i = 0; i < width; i++)
         {
+            spawn = true;
+            m_i = i;
+            m_y = y;
             Destroy(grid[i, y].gameObject);
             grid[i, y] = null;
         }
