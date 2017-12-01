@@ -10,11 +10,13 @@ public class PlaySoundOnce : MonoBehaviour
 
     void Start()
     {
+        lastFall = Blocks.lastFall;
         move.volume = musicVolume.sfxVol;
         rotate.volume = musicVolume.sfxVol;
     }
     void Update()
     {
+
         // Move Left
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -44,5 +46,6 @@ public class PlaySoundOnce : MonoBehaviour
             move.Play();
             lastFall = Time.time;
         }
+        lastFall = Blocks.lastFall;
     }
 }

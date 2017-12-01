@@ -11,6 +11,11 @@ public class setMusicVolume : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if(GameControllerScript.gameOver == true)
+        {
+            music.volume = 0;
+        }
+        else
+            music.volume = musicVolume.musicVol;
+    }
 }

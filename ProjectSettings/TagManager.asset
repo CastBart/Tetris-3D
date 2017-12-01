@@ -12,6 +12,7 @@ TagManager:
   - Undefined
   - Block
   - BlockCreator
+  - music
   layers:
   - Default
   - TransparentFX

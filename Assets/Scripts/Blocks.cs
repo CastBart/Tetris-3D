@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Blocks : MonoBehaviour {
-    float lastFall = 0;
+    public static float lastFall = 0;
     public bool scaled;
     // Use this for initialization
  
