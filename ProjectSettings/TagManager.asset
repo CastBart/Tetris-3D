@@ -13,6 +13,8 @@ TagManager:
   - Block
   - BlockCreator
   - music
+  - MenuManager
+  - UI
   layers:
   - Default
   - TransparentFX

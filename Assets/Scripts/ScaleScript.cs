@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ScaleScript : MonoBehaviour
 {
-    float scaleSpeed = 0.03f;
+    public float scaleSpeed = 0.03f;
     const float maxScale = 1;
 
 	// Use this for initialization
 	void Start ()
     {
-        //Make our block's scale 0
+        //Make our objects scale 0
         transform.localScale = new Vector3(0,0,0);
 	}
 	
@@ -24,7 +24,7 @@ public class ScaleScript : MonoBehaviour
 
             transform.localScale = new Vector3(currentScale.x += scaleSpeed, currentScale.y += scaleSpeed, currentScale.z += scaleSpeed);
 
-            //if our scal eis gone past our max scale then set it to our max scale
+            //if our scale is gone past our max scale then set it to our max scale
             if(transform.localScale.x > 1)
             {
                 transform.localScale = new Vector3(1, 1, 1);

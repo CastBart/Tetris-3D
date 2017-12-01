@@ -63,6 +63,24 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("menu");
     }
 
+    public void PreGame()
+    {
+        //if this method is called then set all the game objects in the main menus script to enables
+        var objectList = GameObject.FindGameObjectsWithTag("UI");
+
+        //enable the lerp script on all UI objects
+        foreach(GameObject child in objectList)
+        {
+            //if the ui elemnt is active in the scene then enable their script
+            if (child.activeInHierarchy)
+                child.GetComponent<LerpToVector>().enabled = true;
+
+            //else activate them
+            else
+                child.SetActive(true);
+        }
+    }
+
     //Closes the game
     public void Exit()
     {
