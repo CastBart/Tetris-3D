@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
+    //pause bool called anywhere
     public static bool paused = false;
+    //game buttons and pause text
     public Text pauseText;
     public Button pauseBtn;
     public Button restartBtn;
@@ -14,37 +16,46 @@ public class ButtonManager : MonoBehaviour
 
     void Start()
     {
+        //we are not paused initially 
         paused = false;
 
         //if our timescale is not 1 then reset it
         if (Time.timeScale != 1)
             Time.timeScale = 1;
     }
+    //switches the scene to the scene passed in
     public void SwitchScene(string lvl)
     {
         SceneManager.LoadScene(lvl);
     }
+    //reloads the scene
     public void Restart()
     {
         paused = false;
         SceneManager.LoadScene("main"); //loads the scene called 'main'
+        GameControllerScript.score = 0;
+        GameControllerScript.gameOver = false;
     }
+    //pauses the game
     public void PauseGame()
     {
-        paused = !paused; //negate our bool
-
-        //If paused is true then set the text of our pause button to continue and our timescale to 0
-        if (paused == true)
+        if (GameObject.FindGameObjectWithTag("BlockCreator").GetComponent<BlockCreator>().enabled)
         {
-            Time.timeScale = 0;
-            pauseText.text = "Continue";
-        }
-        //otherwise set it to pause and set teh timescale to 1
-        else
-        {
+            paused = !paused; //negate our bool
 
-            pauseText.text = "Pause";
-            Time.timeScale = 1;
+            //If paused is true then set the text of our pause button to continue and our timescale to 0
+            if (paused == true)
+            {
+                Time.timeScale = 0;
+                pauseText.text = "Continue";
+            }
+            //otherwise set it to pause and set the timescale to 1
+            else
+            {
+
+                pauseText.text = "Pause";
+                Time.timeScale = 1;
+            }
         }
     }
     public void MainMenu()

@@ -22,7 +22,7 @@ public class Grid : MonoBehaviour {
     public static int level = 1;
     public static int height = 20;
     public static int tempScore = 0;
-    public static List<GameObject> allBlocks = new List<GameObject>();
+     //public static List<GameObject> allBlocks = new List<GameObject>();
     public static Transform[,] grid = new Transform[width, height];
     public GameObject test;
     public GameObject particle;
@@ -64,7 +64,6 @@ public class Grid : MonoBehaviour {
             Grid.m_i = i;
             Grid.m_y = y;
             GameControllerScript.popOffLine();
-          //  Destroy(Grid.grid[i, y].gameObject);
             Grid.grid[i, y] = null;
         }
     }

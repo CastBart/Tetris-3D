@@ -16,9 +16,9 @@ public class scaleDownBox : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if(scaleDown)
+		if(scaleDown || GameControllerScript.gameOver)
         {
-            transform.localScale = Vector3.Lerp(transform.localScale, scaleDesired, 0.05f);
+            transform.localScale = Vector3.Lerp(transform.localScale, scaleDesired, 0.1f);
 
             if (Vector3.Distance(transform.localScale, scaleDesired) <= 0.05f)
                 Destroy(gameObject);

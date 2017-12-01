@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114464301589587576}
   m_Layer: 0
   m_Name: box (5)
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,8 +41,6 @@ GameObject:
   - component: {fileID: 114148541270559130}
   - component: {fileID: 114757113451609770}
   - component: {fileID: 114575045053045340}
-  - component: {fileID: 82679202421972554}
-  - component: {fileID: 82914730549058730}
   m_Layer: 0
   m_Name: LBlock
   m_TagString: Untagged
@@ -64,7 +62,7 @@ GameObject:
   - component: {fileID: 114252832109044762}
   m_Layer: 0
   m_Name: box (6)
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +81,7 @@ GameObject:
   - component: {fileID: 114830005843917814}
   m_Layer: 0
   m_Name: box (7)
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,9 +98,12 @@ GameObject:
   - component: {fileID: 65233572725498088}
   - component: {fileID: 23407765615944532}
   - component: {fileID: 114809785119393028}
+  - component: {fileID: 114944947238826188}
+  - component: {fileID: 82841435846658062}
+  - component: {fileID: 82766775159964602}
   m_Layer: 0
   m_Name: box (4)
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,6 +186,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -200,6 +202,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -217,6 +220,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -232,6 +236,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -249,6 +254,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -264,6 +270,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -281,6 +288,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -296,6 +304,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -339,7 +348,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1662379531218202}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -351,7 +360,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1640380325632788}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -363,7 +372,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1647307830567210}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -375,23 +384,23 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1424772731657176}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!82 &82679202421972554
+--- !u!82 &82766775159964602
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1610555615096830}
+  m_GameObject: {fileID: 1662379531218202}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4d9a30abe9dfe58479dbd3e5e7cd1309, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_audioClip: {fileID: 8300000, guid: 8084bda1667838849a4d9fd2e8e26088, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -460,17 +469,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!82 &82914730549058730
+--- !u!82 &82841435846658062
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1610555615096830}
+  m_GameObject: {fileID: 1662379531218202}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8084bda1667838849a4d9fd2e8e26088, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 4d9a30abe9dfe58479dbd3e5e7cd1309, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -551,8 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6deb5f1ee2664c942918466b6b986ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveBlockSound: {fileID: 82679202421972554}
-  rotateBlockSound: {fileID: 82914730549058730}
+  scaled: 0
 --- !u!114 &114252832109044762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -619,3 +627,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299abc4dc75eb3d4a9817d43cda366d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114944947238826188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662379531218202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e7670552162b7141971c2c089e2f451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move: {fileID: 82841435846658062}
+  rotate: {fileID: 82766775159964602}

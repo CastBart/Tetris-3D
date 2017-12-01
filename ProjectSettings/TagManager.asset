@@ -10,7 +10,8 @@ TagManager:
   - O Block
   - ExplosionParticle
   - Undefined
-  - hi
+  - Block
+  - BlockCreator
   layers:
   - Default
   - TransparentFX

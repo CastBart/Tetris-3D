@@ -23,9 +23,12 @@ GameObject:
   - component: {fileID: 65183378847647088}
   - component: {fileID: 23295692496587456}
   - component: {fileID: 114441833163646482}
+  - component: {fileID: 114808743848757738}
+  - component: {fileID: 82844298707739956}
+  - component: {fileID: 82543409190198414}
   m_Layer: 0
   m_Name: box
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +47,7 @@ GameObject:
   - component: {fileID: 114544691267416234}
   m_Layer: 0
   m_Name: box (2)
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +66,7 @@ GameObject:
   - component: {fileID: 114892799224730008}
   m_Layer: 0
   m_Name: 'box '
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,7 +85,7 @@ GameObject:
   - component: {fileID: 114234056269902498}
   m_Layer: 0
   m_Name: box (3)
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,11 +98,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4417582369146742}
-  - component: {fileID: 114528733403440440}
   - component: {fileID: 114915054155571102}
   - component: {fileID: 114784612687542764}
-  - component: {fileID: 82755870310037434}
-  - component: {fileID: 82078646589481326}
+  - component: {fileID: 114140284270909690}
   m_Layer: 0
   m_Name: IBlock
   m_TagString: Untagged
@@ -185,6 +186,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -200,6 +202,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -217,6 +220,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -232,6 +236,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -249,6 +254,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -264,6 +270,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -281,6 +288,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -296,6 +304,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -339,7 +348,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1671048081458872}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -351,7 +360,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1051335990931986}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -363,7 +372,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1219647635449742}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -375,17 +384,17 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1160185350778714}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!82 &82078646589481326
+--- !u!82 &82543409190198414
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1683792360477234}
+  m_GameObject: {fileID: 1051335990931986}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -460,12 +469,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!82 &82755870310037434
+--- !u!82 &82844298707739956
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1683792360477234}
+  m_GameObject: {fileID: 1051335990931986}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -540,6 +549,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114140284270909690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1683792360477234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6deb5f1ee2664c942918466b6b986ae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaled: 0
 --- !u!114 &114234056269902498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -562,19 +583,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299abc4dc75eb3d4a9817d43cda366d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114528733403440440
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1683792360477234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6deb5f1ee2664c942918466b6b986ae6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveBlockSound: {fileID: 82755870310037434}
-  rotateBlockSound: {fileID: 82078646589481326}
 --- !u!114 &114544691267416234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -597,6 +605,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69e7c85c05a4c54990d2f8ca6519fff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114808743848757738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051335990931986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e7670552162b7141971c2c089e2f451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move: {fileID: 82844298707739956}
+  rotate: {fileID: 82543409190198414}
 --- !u!114 &114892799224730008
 MonoBehaviour:
   m_ObjectHideFlags: 1

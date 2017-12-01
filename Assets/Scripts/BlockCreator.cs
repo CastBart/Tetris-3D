@@ -16,8 +16,8 @@ public class BlockCreator : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        //Grid.next = Random.Range(0, blocks.Length);
-        Grid.next = 0;
+        Grid.next = Random.Range(0, blocks.Length);
+        //Grid.next = 0;
         createBlock();
 	}
 	
@@ -32,19 +32,22 @@ public class BlockCreator : MonoBehaviour {
     /// </summary>
     public void createBlock()
     {
-        //create the new block that moves down
-        Instantiate(blocks[Grid.next], transform.position, Quaternion.identity);
+        if (GameControllerScript.gameOver == false)
+        {
+            //create the new block that moves down
+            Instantiate(blocks[Grid.next], transform.position, Quaternion.identity);
 
 
 
-       // Grid.next = Random.Range(0, blocks.Length);
-        Grid.next = 0;
-        //destroy the old display block
-        Destroy(displayVersion);
-        //create the display block(next block)
-        displayVersion = Instantiate(blocks[Grid.next], new Vector3(-7.5f, 5, 0), Quaternion.identity);
-        //disable scripts for movement
-        displayVersion.GetComponent<Blocks>().enabled = false;
+            Grid.next = Random.Range(0, blocks.Length);
+            //Grid.next = 0;
+            //destroy the old display block
+            Destroy(displayVersion);
+            //create the display block(next block)
+            displayVersion = Instantiate(blocks[Grid.next], new Vector3(-7.5f, 5, 0), Quaternion.identity);
+            //disable scripts for movement
+            displayVersion.GetComponent<Blocks>().enabled = false;
+        }
     }
    
     
