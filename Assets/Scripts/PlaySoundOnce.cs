@@ -7,7 +7,7 @@ public class PlaySoundOnce : MonoBehaviour
     float lastFall = 0;
     public AudioSource move;
     public AudioSource rotate;
-
+    //script to play a sound once rather than once per block to be used on blocks in conjunction with blocks script
     void Start()
     {
         lastFall = Blocks.lastFall;

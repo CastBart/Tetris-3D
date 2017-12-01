@@ -855,7 +855,7 @@ GameObject:
   - component: {fileID: 967231527}
   - component: {fileID: 967231526}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: PlaneMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -875,7 +875,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 83dd0dd5f4be5b247a60e2bac0b2bb32, type: 2}
+  - {fileID: 2100000, guid: 2046bf1886fa2374e9da0e45dfedd7b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

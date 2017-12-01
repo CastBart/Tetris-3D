@@ -14,6 +14,7 @@ public class EndGame : MonoBehaviour
     {
         if (GameControllerScript.gameOver == true)
         {
+            //play game over sound once 
             if(once == false)
             {
                 gameOverSound.Play();

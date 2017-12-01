@@ -1,35 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Blocks : MonoBehaviour {
     public static float lastFall = 0;
     public bool scaled;
+    public static float timeToFall;
+    Scene scene;
     // Use this for initialization
  
     
     void Start ()
     {
         scaled = false;
-
+        scene = SceneManager.GetActiveScene();
         if (!validGrid())
         {
             Debug.Log("GAME OVER");
             Destroy(gameObject);
        
         }
-        
+       
+
     }
 	
 	// Update is called once per frame
 	void Update () {
-
         if (scaled)
         {
-           
+            Debug.Log(Blocks.timeToFall);
             // Move Left
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
+                
                 // Modify position
                 transform.position += new Vector3(-1, 0, 0);
 
@@ -73,7 +77,7 @@ public class Blocks : MonoBehaviour {
 
             // Move Downwards and Fall
             else if (Input.GetKeyDown(KeyCode.DownArrow) ||
-                     Time.time - lastFall >= 1)
+                     Time.time - lastFall >= timeToFall)
 
             { 
                 // Modify position
