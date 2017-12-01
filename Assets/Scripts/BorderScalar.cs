@@ -12,6 +12,7 @@ public class BorderScalar : MonoBehaviour {
     float scaleSpeed;
     Vector3 scaleDesired;
     float currentPercentage;
+    public bool debug;
 
     // Use this for initialization
     void Start ()
@@ -23,7 +24,11 @@ public class BorderScalar : MonoBehaviour {
         processedTransforms = new int[childTransforms.Length]; //create our processed transform array
 
         currentProcessedIndex = 0;
-        scaleSpeed = 22.5f;
+
+        if (debug)
+            scaleSpeed = 900;
+        else
+            scaleSpeed = 22.5f;
     }
 	
 	// Update is called once per frame

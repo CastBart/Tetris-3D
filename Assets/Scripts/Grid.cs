@@ -61,10 +61,11 @@ public class Grid : MonoBehaviour {
         for(int i = 0; i < width; i++)
         {
             spawn = true;
-            m_i = i;
-            m_y = y;
-            Destroy(grid[i, y].gameObject);
-            grid[i, y] = null;
+            Grid.m_i = i;
+            Grid.m_y = y;
+            GameControllerScript.popOffLine();
+          //  Destroy(Grid.grid[i, y].gameObject);
+            Grid.grid[i, y] = null;
         }
     }
 

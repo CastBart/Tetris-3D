@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33986143916226878}
   - component: {fileID: 65183378847647088}
   - component: {fileID: 23295692496587456}
+  - component: {fileID: 114441833163646482}
   m_Layer: 0
   m_Name: box
   m_TagString: Untagged
@@ -40,6 +41,7 @@ GameObject:
   - component: {fileID: 33164470637693670}
   - component: {fileID: 65277127337629308}
   - component: {fileID: 23112391740075544}
+  - component: {fileID: 114544691267416234}
   m_Layer: 0
   m_Name: box (2)
   m_TagString: Untagged
@@ -58,6 +60,7 @@ GameObject:
   - component: {fileID: 33789721664199970}
   - component: {fileID: 65252937861256366}
   - component: {fileID: 23523282151651558}
+  - component: {fileID: 114892799224730008}
   m_Layer: 0
   m_Name: 'box '
   m_TagString: Untagged
@@ -76,6 +79,7 @@ GameObject:
   - component: {fileID: 33895902468715686}
   - component: {fileID: 65179600198108048}
   - component: {fileID: 23706664412440324}
+  - component: {fileID: 114234056269902498}
   m_Layer: 0
   m_Name: box (3)
   m_TagString: Untagged
@@ -536,6 +540,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114234056269902498
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1671048081458872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299abc4dc75eb3d4a9817d43cda366d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114441833163646482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051335990931986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299abc4dc75eb3d4a9817d43cda366d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114528733403440440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -549,6 +575,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveBlockSound: {fileID: 82755870310037434}
   rotateBlockSound: {fileID: 82078646589481326}
+--- !u!114 &114544691267416234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1160185350778714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299abc4dc75eb3d4a9817d43cda366d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114784612687542764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -558,6 +595,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a69e7c85c05a4c54990d2f8ca6519fff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114892799224730008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1219647635449742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299abc4dc75eb3d4a9817d43cda366d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114915054155571102

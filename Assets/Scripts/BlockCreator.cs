@@ -16,7 +16,8 @@ public class BlockCreator : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        Grid.next = Random.Range(0, blocks.Length);
+        //Grid.next = Random.Range(0, blocks.Length);
+        Grid.next = 0;
         createBlock();
 	}
 	
@@ -36,7 +37,8 @@ public class BlockCreator : MonoBehaviour {
 
 
 
-        Grid.next = Random.Range(0, blocks.Length);
+       // Grid.next = Random.Range(0, blocks.Length);
+        Grid.next = 0;
         //destroy the old display block
         Destroy(displayVersion);
         //create the display block(next block)
