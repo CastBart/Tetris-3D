@@ -24,7 +24,7 @@ public class Blocks : MonoBehaviour {
         timeToNextMove = 0.05f;
         timeSinceLastMove = Time.time;
 
-        timeToNextMoveH = 0.1f;
+        timeToNextMoveH = 0.08f;
         scene = SceneManager.GetActiveScene();
         if (!validGrid())
         {

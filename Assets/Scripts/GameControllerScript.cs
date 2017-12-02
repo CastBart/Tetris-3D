@@ -34,13 +34,13 @@ public class GameControllerScript : MonoBehaviour {
         if (scene.name == "level2")
         {
             //if the scene is level two make the blocks gradually pick up speed
-            if (Blocks.timeToFall > 0.1)
+            if (Blocks.timeToFall > 0.15)
             {
                 Blocks.timeToFall -= 0.0001f;
             }
-            if(Blocks.timeToFall < 0.1)
+            if(Blocks.timeToFall < 0.15)
             {
-                Blocks.timeToFall = 0.1f;
+                Blocks.timeToFall = 0.15f;
             }
         }
         scoreText.text = "Score: " + score;

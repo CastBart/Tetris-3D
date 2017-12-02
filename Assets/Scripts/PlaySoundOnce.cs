@@ -16,7 +16,8 @@ public class PlaySoundOnce : MonoBehaviour
     }
     void Update()
     {
-
+        move.volume = musicVolume.sfxVol;
+        rotate.volume = musicVolume.sfxVol;
         // Move Left
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
