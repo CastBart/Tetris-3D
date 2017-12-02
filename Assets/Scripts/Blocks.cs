@@ -8,18 +8,28 @@ public class Blocks : MonoBehaviour {
     public bool scaled;
     public static float timeToFall;
     Scene scene;
+    //time interval for down arrow (to be faster than right or left)
+    float timeToNextMove;
+    //same as above for right and left 
+    float timeToNextMoveH;
+    // time since last move
+    float timeSinceLastMove;
     // Use this for initialization
- 
-    
+
+
     void Start ()
     {
         scaled = false;
+
+        timeToNextMove = 0.05f;
+        timeSinceLastMove = Time.time;
+
+        timeToNextMoveH = 0.1f;
         scene = SceneManager.GetActiveScene();
         if (!validGrid())
         {
             Debug.Log("GAME OVER");
             Destroy(gameObject);
-       
         }
        
 
@@ -30,35 +40,77 @@ public class Blocks : MonoBehaviour {
         if (scaled)
         {
             Debug.Log(Blocks.timeToFall);
-            // Move Left
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                
-                // Modify position
-                transform.position += new Vector3(-1, 0, 0);
 
-                // See if valid
-                if (validGrid())
-                    // It's valid. Update grid.
-                    updateGrid();
-                else
-                    // It's not valid. revert.
-                    transform.position += new Vector3(1, 0, 0);
+             // Move Downwards and Fall
+            if (Input.GetKey(KeyCode.DownArrow) ||
+                     Time.time - lastFall >= timeToFall)
+
+            {
+                if (Time.time - timeSinceLastMove >= timeToNextMove)
+                {
+                    // Modify position
+                    transform.position += new Vector3(0, -1, 0);
+
+                    // See if valid
+                    if (validGrid())
+                    {
+                        // It's valid. Update grid.
+                        updateGrid();
+                    }
+                    else
+                    {
+                        // It's not valid. revert.
+                        transform.position += new Vector3(0, 1, 0);
+
+                        // Clear filled horizontal lines
+                        Grid.deleteFullRows();
+
+                        // Spawn next Group
+                        FindObjectOfType<BlockCreator>().createBlock();
+
+                        // Disable script
+                        enabled = false;
+                    }
+                    lastFall = Time.time;
+                    timeSinceLastMove = Time.time;
+                }
+            }
+            // Move Left
+            else if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                if (Time.time - timeSinceLastMove >= timeToNextMoveH)
+                {
+                    // Modify position
+                    transform.position += new Vector3(-1, 0, 0);
+
+                    // See if valid
+                    if (validGrid())
+                        // It's valid. Update grid.
+                        updateGrid();
+                    else
+                        // It's not valid. revert.
+                        transform.position += new Vector3(1, 0, 0);
+                    timeSinceLastMove = Time.time;
+                }
             }
 
             // Move Right
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.RightArrow))
             {
-                // Modify position
-                transform.position += new Vector3(1, 0, 0);
+                if (Time.time - timeSinceLastMove >= timeToNextMoveH)
+                {
+                    // Modify position
+                    transform.position += new Vector3(1, 0, 0);
 
-                // See if valid
-                if (validGrid())
-                    // It's valid. Update grid.
-                    updateGrid();
-                else
-                    // It's not valid. revert.
-                    transform.position += new Vector3(-1, 0, 0);
+                    // See if valid
+                    if (validGrid())
+                        // It's valid. Update grid.
+                        updateGrid();
+                    else
+                        // It's not valid. revert.
+                        transform.position += new Vector3(-1, 0, 0);
+                    timeSinceLastMove = Time.time;
+                }
             }
 
             // Rotate
@@ -73,41 +125,7 @@ public class Blocks : MonoBehaviour {
                 else
                     // It's not valid. revert.
                     transform.Rotate(0, 0, 90);
-            }
-
-            // Move Downwards and Fall
-            else if (Input.GetKeyDown(KeyCode.DownArrow) ||
-                     Time.time - lastFall >= timeToFall)
-
-            { 
-                // Modify position
-                transform.position += new Vector3(0, -1, 0);
-
-                // See if valid
-                if (validGrid())
-                {
-                    // It's valid. Update grid.
-                    updateGrid();
-                }
-                else
-                {
-                    // It's not valid. revert.
-                    transform.position += new Vector3(0, 1, 0);
-
-                    // Clear filled horizontal lines
-                    Grid.deleteFullRows();
-
-                    // Spawn next Group
-                    FindObjectOfType<BlockCreator>().createBlock();
-
-                    // Disable script
-                    enabled = false;
-                }
-                lastFall = Time.time;
-
-            }
-            
-  
+            }  
             else if (Input.GetKeyDown(KeyCode.Space))
             {
                 //Infinite loop
@@ -140,7 +158,6 @@ public class Blocks : MonoBehaviour {
                     }
                 }
             }
-
         }
     }
 
@@ -149,8 +166,6 @@ public class Blocks : MonoBehaviour {
         foreach (Transform child in transform)
         {
             Vector3 v = Grid.roundVec3(child.position);
-
-      
             if (!Grid.insideBorder(v))
                 return false;
 
