@@ -13,7 +13,7 @@ public class BorderScalar : MonoBehaviour {
     float scaleSpeed;
     Vector3 scaleDesired;
     float currentPercentage;
-    public bool debug;
+    public bool useTnt;
 
     // Use this for initialization
     void Start ()
@@ -26,10 +26,7 @@ public class BorderScalar : MonoBehaviour {
 
         currentProcessedIndex = 0;
 
-        if (debug)
-            scaleSpeed = 900;
-        else
-            scaleSpeed = 22.5f;
+        scaleSpeed = 22.5f;
     }
 	
 	// Update is called once per frame
@@ -92,7 +89,11 @@ public class BorderScalar : MonoBehaviour {
             if (fullyScaled)
             {
                 blockCreator.GetComponent<BlockCreator>().enabled = true; //enable our block creator script
-                tntCreator.GetComponent<TNTCreator>().enabled = true;
+
+                if (useTnt) //if we are using tnt then enable this script
+                {
+                    tntCreator.GetComponent<TNTCreator>().enabled = true;
+                }
                 GetComponent<BorderScalar>().enabled = false;
             }
         }

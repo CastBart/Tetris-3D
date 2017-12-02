@@ -15,6 +15,7 @@ TagManager:
   - music
   - MenuManager
   - UI
+  - TNTCreator
   layers:
   - Default
   - TransparentFX
