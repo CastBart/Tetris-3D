@@ -32,7 +32,7 @@ public class ButtonManager : MonoBehaviour
     public void Restart()
     {
         paused = false;
-        SceneManager.LoadScene("main"); //loads the scene called 'main'
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //Reloads the current scene
         GameControllerScript.score = 0;
         GameControllerScript.gameOver = false;
     }
@@ -68,17 +68,33 @@ public class ButtonManager : MonoBehaviour
         //if this method is called then set all the game objects in the main menus script to enables
         var objectList = GameObject.FindGameObjectsWithTag("UI");
 
-        //enable the lerp script on all UI objects
+        //echange th elerp value fo the buttons
         foreach(GameObject child in objectList)
         {
-            //if the ui elemnt is active in the scene then enable their script
+            //if the child is active in the heirarchy
             if (child.activeInHierarchy)
-                child.GetComponent<LerpToVector>().enabled = true;
-
-            //else activate them
-            else
-                child.SetActive(true);
+                child.GetComponent<LerpToVector>().vectorDesired = new Vector3(0,0,0);
         }
+
+        //Enable our level select buttons
+        GameObject.Find("MenuManager").GetComponent<MenuManager>().EnableLevelSelectButtons();
+    }
+
+    //This method only works when in the pregame screen do not call this anywhere else
+    public void GoBackToPreGame()
+    {
+        var objectList = GameObject.FindGameObjectsWithTag("UI");
+
+        //change the lerp values of our buttons 
+        foreach (GameObject child in objectList)
+        {
+            //if the ui element is active in the scene then enable their script
+            if (child.activeInHierarchy)
+                child.GetComponent<LerpToVector>().vectorDesired = new Vector3(1,1,1);
+        }
+
+        //Enable our level select buttons
+        GameObject.Find("MenuManager").GetComponent<MenuManager>().DisableLevelSelectButtons();
     }
 
     //Closes the game
