@@ -5,6 +5,7 @@ using UnityEngine;
 public class BorderScalar : MonoBehaviour {
 
     public GameObject blockCreator;
+    public GameObject tntCreator;
     Transform[] childTransforms;
     int[] processedTransforms;
     int currentProcessedIndex;
@@ -91,6 +92,7 @@ public class BorderScalar : MonoBehaviour {
             if (fullyScaled)
             {
                 blockCreator.GetComponent<BlockCreator>().enabled = true; //enable our block creator script
+                tntCreator.GetComponent<TNTCreator>().enabled = true;
                 GetComponent<BorderScalar>().enabled = false;
             }
         }
