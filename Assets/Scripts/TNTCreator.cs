@@ -14,7 +14,7 @@ public class TNTCreator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-       // createTNT();
+
 	}
 	
 	// Update is called once per frame
@@ -37,9 +37,8 @@ public class TNTCreator : MonoBehaviour {
     {
         randomSpawn = Random.Range((int)1,(int)10);
         randomExplosionTime = Random.Range(1.0f, 2.5f);
-        m_tnt = Instantiate(bomb, new Vector3(randomSpawn, 15, 0), new Quaternion(0,90,0,0));
+        m_tnt = Instantiate(bomb, new Vector3(randomSpawn, 15, 0), Quaternion.identity);
         alive = true;
-       
     }
     public bool getAlive()
     {

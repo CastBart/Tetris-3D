@@ -7,6 +7,7 @@ public class Blocks : MonoBehaviour {
     public static float lastFall = 0;
     public bool scaled;
     public static float timeToFall;
+    public bool useTNT;
     Scene scene;
     //time interval for down arrow (to be faster than right or left)
     float timeToNextMove;
@@ -65,16 +66,18 @@ public class Blocks : MonoBehaviour {
 
                         // Spawn next Group
                         int random = Random.Range(1, 9);
-                        if ((random == 8 || random == 7) && !FindObjectOfType<TNTCreator>().getAlive())
+                        if (useTNT && (random == 8 || random == 7) && !FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().getAlive())
                         {
-                            FindObjectOfType<TNTCreator>().createTNT();
+                            FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().createTNT();
+                            enabled = false;
                         }
                         else
                         {
                             FindObjectOfType<BlockCreator>().createBlock();
+                            enabled = false;
                         }
                         // Disable script
-                        enabled = false;
+                       
                     }
                     lastFall = Time.time;
                     timeSinceLastMove = Time.time;
@@ -155,9 +158,9 @@ public class Blocks : MonoBehaviour {
 
                         // Spawn next Group
                         int random = Random.Range(1, 9);
-                        if ((random == 8 || random == 7) && !FindObjectOfType<TNTCreator>().getAlive())
+                        if (useTNT && (random == 8 || random == 7) && !FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().getAlive())
                         {
-                            FindObjectOfType<TNTCreator>().createTNT();
+                            FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().createTNT();
                         }
                         else
                         {

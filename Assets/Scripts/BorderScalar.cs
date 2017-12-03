@@ -92,7 +92,7 @@ public class BorderScalar : MonoBehaviour {
 
                 if (useTnt) //if we are using tnt then enable this script
                 {
-                    tntCreator.GetComponent<TNTCreator>().enabled = true;
+                    FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().enabled = true;
                 }
                 GetComponent<BorderScalar>().enabled = false;
             }
