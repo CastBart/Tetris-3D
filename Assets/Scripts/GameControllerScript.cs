@@ -8,6 +8,10 @@ public class GameControllerScript : MonoBehaviour {
 
     public static int score = 0;
     public Text scoreText;
+    public Text levelText;
+    public static int lines = 0;
+    public Text linesText;
+
     public static bool gameOver = false;
     public AudioSource lineComplete;
     public GameObject explosion;

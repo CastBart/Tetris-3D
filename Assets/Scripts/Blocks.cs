@@ -158,10 +158,14 @@ public class Blocks : MonoBehaviour {
 
                         // Spawn next Group
                         int random = Random.Range(1, 9);
-                        if (useTNT && (random == 8 || random == 7) && !FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().getAlive())
+                        if(useTNT)
                         {
-                            FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().createTNT();
+                            if ((random == 8 || random == 7) && !FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().getAlive())
+                            {
+                                FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().createTNT();
+                            }
                         }
+                       
                         else
                         {
                             FindObjectOfType<BlockCreator>().createBlock();
