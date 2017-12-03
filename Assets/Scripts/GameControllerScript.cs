@@ -43,6 +43,9 @@ public class GameControllerScript : MonoBehaviour {
         //reset our score at the start of every level
         GameControllerScript.score = 0;
 
+        //Set the amount of lines we have destroyed to 0 at the start of every game
+        GameControllerScript.lines = 0;
+
         if (SceneManager.GetActiveScene().name == "level2")
         {
             Blocks.timeToFall = 0.5f;
@@ -84,8 +87,6 @@ public class GameControllerScript : MonoBehaviour {
         //else continue updating our blocks speed and score
         else
         {
-
-
             if (SceneManager.GetActiveScene().name == "level2")
             {
                 //if the scene is level two make the blocks gradually pick up speed
@@ -98,7 +99,8 @@ public class GameControllerScript : MonoBehaviour {
                     Blocks.timeToFall = 0.15f;
                 }
             }
-            scoreText.text = "Score: " + score;
+            scoreText.text = "Score: " + GameControllerScript.score;
+            linesText.text = "Lines: " + GameControllerScript.lines;
         }
       
 	}
@@ -122,6 +124,8 @@ public class GameControllerScript : MonoBehaviour {
     //Ends the game by moving our buttons into the centre of the screen and displaying the score and different buttons
     public void EndGame()
     {
+        Time.timeScale = 1;
+
         GameControllerScript.gameOver = true;
 
         //For each element in our ui array array
@@ -174,10 +178,22 @@ public class GameControllerScript : MonoBehaviour {
     {
         foreach (GameObject element in uiElements)
         {
+            //Set the current lerp script on the ui element to scale down
             element.GetComponent<LerpToVector>().lerpLocal = true;
             element.GetComponent<LerpToVector>().lerpScale = true;
             element.GetComponent<LerpToVector>().lerpPosition = false;
             element.GetComponent<LerpToVector>().vectorDesired = new Vector3(0,0,0);
+
+            //We only want to do this if the game is not paused
+            if (ButtonManager.paused == false)
+            {
+                //Add another lerp to vector script and move our elements to a position so it seems it follows the camera
+                var tempRef = element.AddComponent<LerpToVector>();
+                tempRef.speed = 0.035f;
+                tempRef.lerpLocal = true;
+                tempRef.lerpPosition = true;
+                tempRef.vectorDesired = new Vector3(-60, element.transform.localPosition.y, element.transform.localPosition.z);
+            }
         }
     }
 }

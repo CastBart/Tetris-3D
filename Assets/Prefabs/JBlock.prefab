@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaled: 0
-  useTNT: 1
+  useTNT: 0
 --- !u!114 &114622641991035862
 MonoBehaviour:
   m_ObjectHideFlags: 1

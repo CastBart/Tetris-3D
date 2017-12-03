@@ -34,7 +34,7 @@ public class ButtonManager : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("BlockCreator").GetComponent<BlockCreator>().enabled)
         {
             paused = false;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //Reloads the current scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Reloads the current scene
             GameControllerScript.score = 0;
             GameControllerScript.gameOver = false;
         }

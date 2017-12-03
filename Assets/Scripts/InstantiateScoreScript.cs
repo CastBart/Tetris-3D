@@ -18,6 +18,7 @@ public class InstantiateScoreScript : MonoBehaviour {
         if (Grid.tempScore > 0)
         {
             createAddScore(Grid.tempScore);
+            GameControllerScript.lines += Grid.tempScore / 80;
             Grid.tempScore = 0;
         }
     }

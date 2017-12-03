@@ -34,7 +34,7 @@ public class MenuManager : MonoBehaviour
         if(startOfMenu)
         {
             //lerping the buttons position to the initialise position
-            mainMenubuttons[currentButton].transform.localPosition = Vector3.Lerp(mainMenubuttons[currentButton].transform.localPosition, initialisePositions[currentButton], 0.2f);
+            mainMenubuttons[currentButton].transform.localPosition = Vector3.Lerp(mainMenubuttons[currentButton].transform.localPosition, initialisePositions[currentButton], 0.275f);
 
             //if the distance of the buttons position from its initialise position is minimal, then increase the button we are moving
             if (Vector3.Distance(mainMenubuttons[currentButton].transform.localPosition, initialisePositions[currentButton]) <= 0.05f)
