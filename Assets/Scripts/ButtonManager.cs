@@ -31,10 +31,13 @@ public class ButtonManager : MonoBehaviour
     //reloads the scene
     public void Restart()
     {
-        paused = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //Reloads the current scene
-        GameControllerScript.score = 0;
-        GameControllerScript.gameOver = false;
+        if (GameObject.FindGameObjectWithTag("BlockCreator").GetComponent<BlockCreator>().enabled)
+        {
+            paused = false;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //Reloads the current scene
+            GameControllerScript.score = 0;
+            GameControllerScript.gameOver = false;
+        }
     }
     //pauses the game
     public void PauseGame()

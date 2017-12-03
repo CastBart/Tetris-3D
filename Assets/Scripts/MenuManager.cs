@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    public GameObject[] buttons;
+    public GameObject[] PreGamebuttons;
     public Vector3[] startPositions;
     public Vector3[] endPositions;
     public Vector3[] levelColours;
@@ -14,8 +14,15 @@ public class MenuManager : MonoBehaviour
     Vector3 chosenLevelColour;
     string levelChosenName;
 
+    public GameObject[] mainMenubuttons;
+    public Vector3[] initialisePositions;
+    bool startOfMenu; //bool to hold wether the scene has just started or not
+    int currentButton; //the currently indexed button
+
     void Start()
     {
+        currentButton = 0;
+        startOfMenu = true;
         GameObject.FindGameObjectWithTag("MainCamera").transform.position = new Vector3(5, 5, -19.25f);
         //Set our background to orange at the start of the game
         bgMaterial.color = new Color(levelColours[2].x, levelColours[2].y, levelColours[2].z, 255);
@@ -24,12 +31,30 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
+        if(startOfMenu)
+        {
+            //lerping the buttons position to the initialise position
+            mainMenubuttons[currentButton].transform.localPosition = Vector3.Lerp(mainMenubuttons[currentButton].transform.localPosition, initialisePositions[currentButton], 0.2f);
+
+            //if the distance of the buttons position from its initialise position is minimal, then increase the button we are moving
+            if (Vector3.Distance(mainMenubuttons[currentButton].transform.localPosition, initialisePositions[currentButton]) <= 0.05f)
+            {
+                currentButton++;
+
+                if(currentButton >= mainMenubuttons.Length)
+                {
+                    startOfMenu = false;
+                }
+            }
+
+        }
+
         if(startLevel)
         {
             var newColour = Vector3.Lerp(new Vector3(bgMaterial.color.r, bgMaterial.color.g, bgMaterial.color.b), chosenLevelColour, 0.05f);
             bgMaterial.color = new Color(newColour.x, newColour.y, newColour.z, 1);
 
-            if(Vector3.Distance(newColour, chosenLevelColour) <= 0.005f)
+            if(Vector3.Distance(newColour, chosenLevelColour) <= 0.01f)
             {
                 SceneManager.LoadScene(levelChosenName);
             }
@@ -63,7 +88,7 @@ public class MenuManager : MonoBehaviour
         MoveButtons(startPositions);
 
         //Scale down our logo
-        GameObject.Find("Logo").GetComponent<LerpToVector>().vectorDesired = new Vector3(0, 480, 0);
+        GameObject.Find("Logo").GetComponent<LerpToVector>().enabled = true;
 
         var cameraRef = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<LerpToVector>();
         cameraRef.vectorDesired = new Vector3(1.85f, cameraRef.vectorDesired.y, cameraRef.vectorDesired.z);
@@ -81,7 +106,7 @@ public class MenuManager : MonoBehaviour
         MoveButtons(startPositions);
 
         //Scale down our logos
-        GameObject.Find("Logo").GetComponent<LerpToVector>().vectorDesired = new Vector3(0, 480, 0);
+        GameObject.Find("Logo").GetComponent<LerpToVector>().enabled = true;
 
         var cameraRef = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<LerpToVector>();
         cameraRef.vectorDesired = new Vector3(1.85f, cameraRef.vectorDesired.y, cameraRef.vectorDesired.z);
@@ -93,9 +118,9 @@ public class MenuManager : MonoBehaviour
     public void MoveButtons(Vector3[] positions)
     {
         //Move all of our pregame buttons back to where they were
-        for (int i = 0; i < buttons.Length; i++)
+        for (int i = 0; i < PreGamebuttons.Length; i++)
         {
-            buttons[i].GetComponent<LerpToVector>().vectorDesired = positions[i];
+            PreGamebuttons[i].GetComponent<LerpToVector>().vectorDesired = positions[i];
         }
     }
 }

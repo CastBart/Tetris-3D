@@ -17,7 +17,6 @@ public class InstantiateScoreScript : MonoBehaviour {
     {
         if (Grid.tempScore > 0)
         {
-            Debug.Log("Created object");
             createAddScore(Grid.tempScore);
             Grid.tempScore = 0;
         }

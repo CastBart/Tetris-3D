@@ -617,7 +617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -70}
+  m_AnchoredPosition: {x: 0, y: -343}
   m_SizeDelta: {x: 125, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &514625593
@@ -767,7 +767,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -10}
+  m_AnchoredPosition: {x: 0, y: -283}
   m_SizeDelta: {x: 125, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &529496447
@@ -1618,7 +1618,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 50}
+  m_AnchoredPosition: {x: 0, y: -223}
   m_SizeDelta: {x: 125, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1369808472
@@ -1916,7 +1916,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: 227}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1504504260
@@ -1958,12 +1958,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1504504258}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b757362d3ac02fc4c8afaa1d232feb3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vectorDesired: {x: 0, y: 100, z: 0}
+  vectorDesired: {x: 0, y: 480, z: 0}
   lerpScale: 0
   lerpPosition: 1
   lerpLocal: 1
@@ -1995,7 +1995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969ccb9c4c58d7d49913ad35a8e9de8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons:
+  PreGamebuttons:
   - {fileID: 2042105223}
   - {fileID: 1469471971}
   - {fileID: 1328232138}
@@ -2012,6 +2012,16 @@ MonoBehaviour:
   - {x: 0, y: 0.047058824, z: 1}
   - {x: 1, y: 0.6431373, z: 0}
   bgMaterial: {fileID: 2100000, guid: 20983882946df63448fc39ad93102b4f, type: 2}
+  mainMenubuttons:
+  - {fileID: 1504504258}
+  - {fileID: 1369808470}
+  - {fileID: 529496445}
+  - {fileID: 514625591}
+  initialisePositions:
+  - {x: 0, y: 100, z: 0}
+  - {x: 0, y: 50, z: 0}
+  - {x: 0, y: -10, z: 0}
+  - {x: 0, y: -70, z: 0}
 --- !u!4 &1536291737
 Transform:
   m_ObjectHideFlags: 0

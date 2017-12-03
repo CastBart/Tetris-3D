@@ -39,8 +39,6 @@ public class Blocks : MonoBehaviour {
 	void Update () {
         if (scaled)
         {
-            Debug.Log(Blocks.timeToFall);
-
              // Move Downwards and Fall
             if (Input.GetKey(KeyCode.DownArrow) ||
                      Time.time - lastFall >= timeToFall)
