@@ -22,13 +22,11 @@ GameObject:
   - component: {fileID: 33033064554760954}
   - component: {fileID: 65322277492812312}
   - component: {fileID: 23423002474154288}
-  - component: {fileID: 114647208108290594}
   - component: {fileID: 114940485164405912}
-  - component: {fileID: 114063594942826514}
   - component: {fileID: 114303312036978104}
   m_Layer: 0
   m_Name: TNT
-  m_TagString: Untagged
+  m_TagString: TNTCreator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,21 +91,10 @@ BoxCollider:
   m_GameObject: {fileID: 1566014120663612}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114063594942826514
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1566014120663612}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a69e7c85c05a4c54990d2f8ca6519fff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114303312036978104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,18 +104,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0dba02997b7a844e879ddbb956eecf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scaled: 0
---- !u!114 &114647208108290594
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1566014120663612}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6deb5f1ee2664c942918466b6b986ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scaled: 0
@@ -144,3 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleSpeed: 0.03
+  usingTNT: 1

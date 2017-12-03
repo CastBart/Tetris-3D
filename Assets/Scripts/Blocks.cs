@@ -64,15 +64,15 @@ public class Blocks : MonoBehaviour {
                         Grid.deleteFullRows();
 
                         // Spawn next Group
-                       // int random = Random.Range(1, 9);
-                      //  if (random == 8 && !FindObjectOfType<TNTCreator>().getAlive())
-                      //  {
-                      //      FindObjectOfType<TNTCreator>().createTNT();
-                      //  }
-                      //  else
-                      //  {
+                        int random = Random.Range(1, 9);
+                        if ((random == 8 || random == 7) && !FindObjectOfType<TNTCreator>().getAlive())
+                        {
+                            FindObjectOfType<TNTCreator>().createTNT();
+                        }
+                        else
+                        {
                             FindObjectOfType<BlockCreator>().createBlock();
-                      //  }
+                        }
                         // Disable script
                         enabled = false;
                     }
@@ -154,15 +154,15 @@ public class Blocks : MonoBehaviour {
                         Grid.deleteFullRows();
 
                         // Spawn next Group
-                      //  int random = Random.Range(1, 9);
-                       // if (random == 8 && !FindObjectOfType<TNTCreator>().getAlive())
-                       // {
-                        //    FindObjectOfType<TNTCreator>().createTNT();
-                       // }
-                       // else
-                       // {
+                        int random = Random.Range(1, 9);
+                        if ((random == 8 || random == 7) && !FindObjectOfType<TNTCreator>().getAlive())
+                        {
+                            FindObjectOfType<TNTCreator>().createTNT();
+                        }
+                        else
+                        {
                             FindObjectOfType<BlockCreator>().createBlock();
-                       // }
+                        }
 
                         // Disable script
                         enabled = false;

@@ -22,7 +22,7 @@ public class EndGame : MonoBehaviour
                 once = true;
             }
         }
-        if (other.transform.parent.GetComponent<Blocks>().enabled == false)
+        if (  other.tag != "TNTCreator" &&  other.transform.parent.GetComponent<Blocks>().enabled == false)
         {
             //If the game is not over then end the game
             if (GameControllerScript.gameOver == false)
