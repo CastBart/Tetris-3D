@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class EndGame : MonoBehaviour
 {
-    public AudioSource gameOverSound;
-    bool once;
+    //public AudioSource gameOverSound;
+    //bool once;
 
-    void Start()
-    {
-        once = false;
-    }
+    //void Start()
+    //{
+    //    once = false;
+    //}
     void OnTriggerStay(Collider other)
-    {
-        if (GameControllerScript.gameOver == true)
-        {
-            //play game over sound once 
-            if(once == false)
-            {
-                gameOverSound.Play();
-                once = true;
-            }
-        }
+    { 
+        //if (GameControllerScript.gameOver == true)
+        //{
+        //    //play game over sound once 
+        //    if (once == false)
+        //    {
+        //        gameOverSound.Play();
+        //        once = true;
+        //    }
+        //}
         if (  other.tag != "TNTCreator" &&  other.transform.parent.GetComponent<Blocks>().enabled == false)
         {
             //If the game is not over then end the game

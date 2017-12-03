@@ -23,9 +23,13 @@ public class DontDestroyOnLoad : MonoBehaviour
     {
         //get scene name 
         Scene scene = SceneManager.GetActiveScene();
-		if(scene.name == "main")
+        if (scene.name == "main")
         {
             Destroy(this.gameObject);
         }
-	}
+        if (scene.name == "level2")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

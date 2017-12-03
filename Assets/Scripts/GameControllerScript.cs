@@ -14,6 +14,8 @@ public class GameControllerScript : MonoBehaviour {
 
     public static bool gameOver = false;
     public AudioSource lineComplete;
+    bool playOnce;
+    public AudioSource gameOverPlay;
     public GameObject explosion;
 
     public GameObject[] uiElements; //our canvas buttons
@@ -30,6 +32,7 @@ public class GameControllerScript : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        playOnce = false;
         //Set our materials colour to the first colour in our colour array
         bgMaterial.color = bgColours[0];
 
@@ -80,6 +83,7 @@ public class GameControllerScript : MonoBehaviour {
                 else if(goToMainMenu)
                 {
                     SceneManager.LoadScene("menu"); //load the main menu scene
+                    GameControllerScript.gameOver = false;
                 }
             }
         }
@@ -124,8 +128,12 @@ public class GameControllerScript : MonoBehaviour {
     //Ends the game by moving our buttons into the centre of the screen and displaying the score and different buttons
     public void EndGame()
     {
+        if(playOnce == false)
+        {
+            gameOverPlay.Play();
+            playOnce = true;
+        }
         Time.timeScale = 1;
-
         GameControllerScript.gameOver = true;
 
         //For each element in our ui array array
@@ -171,6 +179,7 @@ public class GameControllerScript : MonoBehaviour {
             ClearScreen();
 
             goToMainMenu = true;
+           
         }
     }
 
