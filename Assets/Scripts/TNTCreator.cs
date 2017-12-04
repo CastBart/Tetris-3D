@@ -11,6 +11,7 @@ public class TNTCreator : MonoBehaviour {
     float randomExplosionTime = 0;
     float currentTime = 0;
     bool stopped = false;
+    bool destroy = false;
 
 	// Use this for initialization
 	void Start () {
@@ -22,23 +23,23 @@ public class TNTCreator : MonoBehaviour {
     {
        if(alive)
         {
-           
-            if(stopped && Time.time - currentTime >= randomExplosionTime)
+
+            if (stopped && Time.time - currentTime >= randomExplosionTime)
             {
-                ////////////////////////
-                //-----Explosion------//
-                ////////////////////////
-                Destroy(m_tnt);
+                destroy = true;
             }
+       
         }
 	}
     
     public void createTNT()
     {
         randomSpawn = Random.Range((int)1,(int)10);
-        randomExplosionTime = Random.Range(1.0f, 2.5f);
-        m_tnt = Instantiate(bomb, new Vector3(randomSpawn, 15, 0), Quaternion.identity);
+        randomExplosionTime = Random.Range(5.0f, 10.0f);
+        m_tnt = Instantiate(bomb, new Vector3(randomSpawn, 15, 0), new Quaternion(0,90,0,0));
         alive = true;
+        stopped = false;
+        destroy = false;
     }
     public bool getAlive()
     {
@@ -53,5 +54,17 @@ public class TNTCreator : MonoBehaviour {
         currentTime = Time.time;
         stopped = newStopped;
     }
-   
+
+    void OnTriggerEnter (Collider collision)
+    {
+        if (destroy)
+        {
+            Destroy(m_tnt);
+            Vector3 temp = collision.gameObject.transform.position;
+            if (Grid.grid[(int)temp.x, (int)temp.y])
+            {
+                Destroy(collision.gameObject);
+            }
+        }
+    }
 }
