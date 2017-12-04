@@ -5,6 +5,8 @@ using UnityEngine;
 public class TNTCreator : MonoBehaviour {
 
     public GameObject bomb;
+    public AudioSource light;
+    public AudioSource blow;
     GameObject m_tnt;
     bool alive = false;
     int randomSpawn = 0;
@@ -15,17 +17,19 @@ public class TNTCreator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        light.volume = musicVolume.sfxVol;
+        blow.volume = musicVolume.sfxVol;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-       if(alive)
+        if (alive)
         {
 
             if (stopped)
             {
+                blow.Play();
                 destroy = true;
                 alive = false;
             }
@@ -35,6 +39,7 @@ public class TNTCreator : MonoBehaviour {
     
     public void createTNT()
     {
+        light.Play();
         randomSpawn = Random.Range((int)1,(int)10);
         randomExplosionTime = Random.Range(5.0f, 10.0f);
         m_tnt = Instantiate(bomb, new Vector3(randomSpawn, 15, 0), new Quaternion(0,90,0,0));

@@ -115,7 +115,7 @@ public class Blocks : MonoBehaviour {
                 int random = Random.Range(1, 9);
                 if (useTNT)
                 {
-                    if ((random == 8 || random == 7) && !FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().getAlive())
+                    if ((random == 7) && !FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().getAlive())
                     {
                         GameObject.FindGameObjectWithTag("GameController").GetComponent<TNTCreator>().createTNT();
                         Debug.Log("Spawn");
@@ -197,7 +197,7 @@ public class Blocks : MonoBehaviour {
                 int random = Random.Range(1, 9);
                 if (useTNT)
                 {
-                    if ((random == 8 || random == 7) && !FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().getAlive())
+                    if ((random == 7) && !FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().getAlive())
                     {
                         GameObject.FindGameObjectWithTag("GameController").GetComponent<TNTCreator>().createTNT();
                         Debug.Log("Spawn");
