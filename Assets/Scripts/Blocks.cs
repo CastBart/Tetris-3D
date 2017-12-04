@@ -91,9 +91,14 @@ public class Blocks : MonoBehaviour {
                                 enabled = false;
                             }
                         }
-                       
+                        else
+                        {
+                            FindObjectOfType<BlockCreator>().createBlock();
+                            enabled = false;
+                        }
+
                         // Disable script
-                       
+
                     }
                     lastFall = Time.time;
                     timeSinceLastMove = Time.time;
@@ -185,8 +190,13 @@ public class Blocks : MonoBehaviour {
                                 FindObjectOfType<BlockCreator>().createBlock();
                             }
                         }
-                       
-                       
+                        else
+                        {
+                            FindObjectOfType<BlockCreator>().createBlock();
+                            enabled = false;
+                        }
+
+
 
                         // Disable script
                         enabled = false;
