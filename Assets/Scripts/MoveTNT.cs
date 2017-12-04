@@ -16,9 +16,13 @@ public class MoveTNT : MonoBehaviour {
     float timeSinceLastMove;
     // Use this for initialization
 
+    bool destroy;
+    bool move;
 
     void Start()
     {
+        destroy = false;
+            move = true;
        // scaled = false;
 
         timeToNextMove = 0.25f;
@@ -40,7 +44,7 @@ public class MoveTNT : MonoBehaviour {
         Debug.Log(Blocks.timeToFall);
 
         // Move Downwards and Fall
-        if (Time.time - lastFall >= timeToFall)
+        if (Time.time - lastFall >= timeToFall && move)
 
         {
             if (Time.time - timeSinceLastMove >= timeToNextMove)
@@ -64,17 +68,21 @@ public class MoveTNT : MonoBehaviour {
 
                     // Spawn next Group
                     FindObjectOfType<BlockCreator>().createBlock();
-                        
+
 
                     // Disable script
                     //  enabled = false;
-                    GetComponent<MoveTNT>().enabled = false;
+                    move = false;
                     FindObjectOfType<TNTCreator>().setStopped(true);
                     GetComponent<BoxCollider>().enabled = true;
                 }
                 lastFall = Time.time;
                 timeSinceLastMove = Time.time;
             }
+        }
+        if(destroy)
+        {
+            Destroy(gameObject);
         }
        // }
     }
@@ -103,6 +111,8 @@ public class MoveTNT : MonoBehaviour {
         return true;
     }
 
+  
+
     void updateGrid()
     {
         for (int y = 0; y < Grid.height; ++y)
@@ -125,6 +135,19 @@ public class MoveTNT : MonoBehaviour {
        //     Vector2 v = Grid.roundVec3(child.position);
       //      Grid.grid[(int)v.x, (int)v.y] = child;
       //  }
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+
+        Debug.Log("Destroy");
+        Vector3 temp = collision.gameObject.transform.position;
+        if(collision.tag == "Block")
+        {
+            Destroy(collision.gameObject);
+        }
+
+        destroy = true;
     }
 
 }

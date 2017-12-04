@@ -24,9 +24,12 @@ public class TNTCreator : MonoBehaviour {
        if(alive)
         {
 
-            if (stopped && Time.time - currentTime >= randomExplosionTime)
+            if (stopped)
             {
                 destroy = true;
+              
+
+
             }
        
         }
@@ -55,16 +58,6 @@ public class TNTCreator : MonoBehaviour {
         stopped = newStopped;
     }
 
-    void OnTriggerEnter (Collider collision)
-    {
-        if (destroy)
-        {
-            Destroy(m_tnt);
-            Vector3 temp = collision.gameObject.transform.position;
-            if (Grid.grid[(int)temp.x, (int)temp.y])
-            {
-                Destroy(collision.gameObject);
-            }
-        }
-    }
+
+   
 }

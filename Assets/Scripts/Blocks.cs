@@ -25,7 +25,7 @@ public class Blocks : MonoBehaviour {
         timeToNextMove = 0.05f;
         timeSinceLastMove = Time.time;
 
-        timeToNextMoveH = 0.08f;
+        timeToNextMoveH = 0.12f;
         scene = SceneManager.GetActiveScene();
         if (!validGrid())
         {
@@ -82,23 +82,21 @@ public class Blocks : MonoBehaviour {
                         {
                             if ((random == 8 || random == 7) && !FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().getAlive())
                             {
-                                FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().createTNT();
-                                enabled = false;
+                                GameObject.FindGameObjectWithTag("GameController").GetComponent<TNTCreator>().createTNT();
+                                Debug.Log("Spawn");
                             }
                             else
                             {
                                 FindObjectOfType<BlockCreator>().createBlock();
-                                enabled = false;
                             }
                         }
                         else
                         {
                             FindObjectOfType<BlockCreator>().createBlock();
-                            enabled = false;
                         }
 
                         // Disable script
-
+                        enabled = false;
                     }
                     lastFall = Time.time;
                     timeSinceLastMove = Time.time;
@@ -183,7 +181,8 @@ public class Blocks : MonoBehaviour {
                         {
                             if ((random == 8 || random == 7) && !FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().getAlive())
                             {
-                                FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().createTNT();
+                                GameObject.FindGameObjectWithTag("GameController").GetComponent<TNTCreator>().createTNT();
+                                Debug.Log("Spawn");
                             }
                             else
                             {
@@ -193,7 +192,6 @@ public class Blocks : MonoBehaviour {
                         else
                         {
                             FindObjectOfType<BlockCreator>().createBlock();
-                            enabled = false;
                         }
 
 
