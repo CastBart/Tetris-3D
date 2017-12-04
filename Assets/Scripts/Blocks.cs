@@ -21,11 +21,10 @@ public class Blocks : MonoBehaviour {
     void Start ()
     {
         scaled = false;
-
+        
         timeToNextMove = 0.05f;
         timeSinceLastMove = Time.time;
-
-        timeToNextMoveH = 0.12f;
+        timeToNextMoveH = 0.15f;
         scene = SceneManager.GetActiveScene();
         if (!validGrid())
         {
@@ -52,158 +51,186 @@ public class Blocks : MonoBehaviour {
 	void Update () {
         if (scaled)
         {
-             // Move Downwards and Fall
+            // Move Downwards and Fall
             if (Input.GetKey(KeyCode.DownArrow) ||
                      Time.time - lastFall >= timeToFall)
-
             {
-                if (Time.time - timeSinceLastMove >= timeToNextMove)
-                {
-                    // Modify position
-                    transform.position += new Vector3(0, -1, 0);
-
-                    // See if valid
-                    if (validGrid())
-                    {
-                        // It's valid. Update grid.
-                        updateGrid();
-                    }
-                    else
-                    {
-                        // It's not valid. revert.
-                        transform.position += new Vector3(0, 1, 0);
-
-                        // Clear filled horizontal lines
-                        Grid.deleteFullRows();
-
-                        // Spawn next Group
-                        int random = Random.Range(1, 9);
-                        if (useTNT)
-                        {
-                            if ((random == 8 || random == 7) && !FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().getAlive())
-                            {
-                                GameObject.FindGameObjectWithTag("GameController").GetComponent<TNTCreator>().createTNT();
-                                Debug.Log("Spawn");
-                            }
-                            else
-                            {
-                                FindObjectOfType<BlockCreator>().createBlock();
-                            }
-                        }
-                        else
-                        {
-                            FindObjectOfType<BlockCreator>().createBlock();
-                        }
-
-                        // Disable script
-                        enabled = false;
-                    }
-                    lastFall = Time.time;
-                    timeSinceLastMove = Time.time;
-                }
+                MoveDown();
             }
             // Move Left
-            else if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
-                if (Time.time - timeSinceLastMove >= timeToNextMoveH)
-                {
-                    // Modify position
-                    transform.position += new Vector3(-1, 0, 0);
-
-                    // See if valid
-                    if (validGrid())
-                        // It's valid. Update grid.
-                        updateGrid();
-                    else
-                        // It's not valid. revert.
-                        transform.position += new Vector3(1, 0, 0);
-                    timeSinceLastMove = Time.time;
-                }
+                MoveLeft();
             }
 
             // Move Right
-            else if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.RightArrow))
             {
-                if (Time.time - timeSinceLastMove >= timeToNextMoveH)
-                {
-                    // Modify position
-                    transform.position += new Vector3(1, 0, 0);
-
-                    // See if valid
-                    if (validGrid())
-                        // It's valid. Update grid.
-                        updateGrid();
-                    else
-                        // It's not valid. revert.
-                        transform.position += new Vector3(-1, 0, 0);
-                    timeSinceLastMove = Time.time;
-                }
+                MoveRight();
             }
 
             // Rotate
-            else if (Input.GetKeyDown(KeyCode.UpArrow) && tag != "O Block") //if we pressed the up arrow and this block is not an O Block
+            if (Input.GetKeyDown(KeyCode.UpArrow) && tag != "O Block") //if we pressed the up arrow and this block is not an O Block
             {
-                transform.Rotate(0, 0, -90);
+                Rotate();
+            }
+       
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                MoveToBottom();
+            }
+        }
+    
+    }
+    void MoveDown()
+    {
+        if(Input.GetKey(KeyCode.RightArrow))
+        {
+            MoveRight();
+        }
+        if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            MoveLeft();
+        }
+        if (Time.time - timeSinceLastMove >= timeToNextMove)
+        {
+            // Modify position
+            transform.position += new Vector3(0, -1, 0);
 
-                // See if valid
-                if (validGrid())
-                    // It's valid. Update grid.
-                    updateGrid();
-                else
-                    // It's not valid. revert.
-                    transform.Rotate(0, 0, 90);
-            }  
-            else if (Input.GetKeyDown(KeyCode.Space))
+            // See if valid
+            if (validGrid())
             {
-                //Infinite loop
-                while(true)
+                // It's valid. Update grid.
+                updateGrid();
+            }
+            else
+            {
+                // It's not valid. revert.
+                transform.position += new Vector3(0, 1, 0);
+
+                // Clear filled horizontal lines
+                Grid.deleteFullRows();
+
+                // Spawn next Group
+                int random = Random.Range(1, 9);
+                if (useTNT)
                 {
-                    // Modify position
-                    transform.position += new Vector3(0, -1, 0);
-
-                    // See if valid
-                    if (validGrid())
+                    if ((random == 8 || random == 7) && !FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().getAlive())
                     {
-                        // It's valid. Update grid.
-                        updateGrid();
+                        GameObject.FindGameObjectWithTag("GameController").GetComponent<TNTCreator>().createTNT();
+                        Debug.Log("Spawn");
                     }
                     else
                     {
-                        // It's not valid. revert.
-                        transform.position += new Vector3(0, 1, 0);
-
-                        // Clear filled horizontal lines
-                        Grid.deleteFullRows();
-
-                        // Spawn next Group
-                        int random = Random.Range(1, 9);
-                        if(useTNT)
-                        {
-                            if ((random == 8 || random == 7) && !FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().getAlive())
-                            {
-                                GameObject.FindGameObjectWithTag("GameController").GetComponent<TNTCreator>().createTNT();
-                                Debug.Log("Spawn");
-                            }
-                            else
-                            {
-                                FindObjectOfType<BlockCreator>().createBlock();
-                            }
-                        }
-                        else
-                        {
-                            FindObjectOfType<BlockCreator>().createBlock();
-                        }
-
-
-
-                        // Disable script
-                        enabled = false;
-
-                        break;
+                        FindObjectOfType<BlockCreator>().createBlock();
                     }
                 }
+                else
+                {
+                    FindObjectOfType<BlockCreator>().createBlock();
+                }
+
+                // Disable script
+                enabled = false;
+            }
+            lastFall = Time.time;
+            timeSinceLastMove = Time.time;
+        }
+    }
+    void MoveLeft()
+    {
+        if (Time.time - timeSinceLastMove >= timeToNextMoveH)
+        {
+            // Modify position
+            transform.position += new Vector3(-1, 0, 0);
+
+            // See if valid
+            if (validGrid())
+                // It's valid. Update grid.
+                updateGrid();
+            else
+                // It's not valid. revert.
+                transform.position += new Vector3(1, 0, 0);
+            timeSinceLastMove = Time.time;
+        }
+    }
+    void MoveRight()
+    {
+        if (Time.time - timeSinceLastMove >= timeToNextMoveH)
+        {
+            // Modify position
+            transform.position += new Vector3(1, 0, 0);
+
+            // See if valid
+            if (validGrid())
+                // It's valid. Update grid.
+                updateGrid();
+            else
+                // It's not valid. revert.
+                transform.position += new Vector3(-1, 0, 0);
+            timeSinceLastMove = Time.time;
+        }
+    }
+    void MoveToBottom()
+    {
+        //Infinite loop
+        while (true)
+        {
+            // Modify position
+            transform.position += new Vector3(0, -1, 0);
+
+            // See if valid
+            if (validGrid())
+            {
+                // It's valid. Update grid.
+                updateGrid();
+            }
+            else
+            {
+                // It's not valid. revert.
+                transform.position += new Vector3(0, 1, 0);
+
+                // Clear filled horizontal lines
+                Grid.deleteFullRows();
+
+                // Spawn next Group
+                int random = Random.Range(1, 9);
+                if (useTNT)
+                {
+                    if ((random == 8 || random == 7) && !FindObjectOfType<GameControllerScript>().GetComponent<TNTCreator>().getAlive())
+                    {
+                        GameObject.FindGameObjectWithTag("GameController").GetComponent<TNTCreator>().createTNT();
+                        Debug.Log("Spawn");
+                    }
+                    else
+                    {
+                        FindObjectOfType<BlockCreator>().createBlock();
+                    }
+                }
+                else
+                {
+                    FindObjectOfType<BlockCreator>().createBlock();
+                }
+
+
+                // Disable script
+                enabled = false;
+
+                break;
             }
         }
+    }
+    void Rotate()
+    {
+        transform.Rotate(0, 0, -90);
+
+        // See if valid
+        if (validGrid())
+            // It's valid. Update grid.
+            updateGrid();
+        else
+            // It's not valid. revert.
+            transform.Rotate(0, 0, 90);
     }
 
     bool validGrid()

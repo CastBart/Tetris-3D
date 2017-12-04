@@ -32,6 +32,8 @@ public class GameControllerScript : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        gameOverPlay.volume = musicVolume.musicVol;
+        lineComplete.volume = musicVolume.sfxVol;
         playOnce = false;
         //Set our materials colour to the first colour in our colour array
         bgMaterial.color = bgColours[0];
@@ -51,7 +53,7 @@ public class GameControllerScript : MonoBehaviour {
 
         if (SceneManager.GetActiveScene().name == "level2")
         {
-            Blocks.timeToFall = 0.5f;
+            Blocks.timeToFall = 1f;
         }
         else
         {
@@ -94,13 +96,13 @@ public class GameControllerScript : MonoBehaviour {
             if (SceneManager.GetActiveScene().name == "level2")
             {
                 //if the scene is level two make the blocks gradually pick up speed
-                if (Blocks.timeToFall > 0.15)
+                if (Blocks.timeToFall > 0.5)
                 {
                     Blocks.timeToFall -= 0.0001f;
                 }
-                if (Blocks.timeToFall < 0.15)
+                if (Blocks.timeToFall < 0.5)
                 {
-                    Blocks.timeToFall = 0.15f;
+                    Blocks.timeToFall = 0.5f;
                 }
             }
             scoreText.text = "Score: " + GameControllerScript.score;
