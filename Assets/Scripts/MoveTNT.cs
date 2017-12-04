@@ -15,7 +15,7 @@ public class MoveTNT : MonoBehaviour {
     // time since last move
     float timeSinceLastMove;
     // Use this for initialization
-
+    public GameObject explosion;
     bool destroy;
     bool move;
 
@@ -82,6 +82,7 @@ public class MoveTNT : MonoBehaviour {
         }
         if(destroy)
         {
+            Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
        // }

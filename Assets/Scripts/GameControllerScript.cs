@@ -116,7 +116,7 @@ public class GameControllerScript : MonoBehaviour {
         lineComplete.Stop();
         lineComplete.Play();
         var temp = Grid.grid[Grid.m_i, Grid.m_y].gameObject.AddComponent<Rigidbody>();
-        temp.AddForce(new Vector3(0,0, -5),ForceMode.Impulse);
+        temp.AddForce(new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), -5),ForceMode.Impulse);
         temp.gameObject.GetComponent<scaleDownBox>().SetScaleDown(true);        
     }
 

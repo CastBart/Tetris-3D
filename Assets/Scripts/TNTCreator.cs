@@ -27,9 +27,7 @@ public class TNTCreator : MonoBehaviour {
             if (stopped)
             {
                 destroy = true;
-              
-
-
+                alive = false;
             }
        
         }
