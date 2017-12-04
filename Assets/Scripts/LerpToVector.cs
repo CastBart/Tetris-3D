@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// Author: Daryl
 /// Simple script that moves or scales an object to a desired vector
 /// </summary>
 

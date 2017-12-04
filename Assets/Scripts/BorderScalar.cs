@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * Author Daryl
+ * Description: This script is used to scale up the border of our game. We choose a random index in the array of border blocks and scale 
+ * each one up. When all blocks are scaled we then start the game
+ */
 public class BorderScalar : MonoBehaviour {
 
     public GameObject blockCreator;
@@ -55,6 +59,7 @@ public class BorderScalar : MonoBehaviour {
 
                 currentProcessedIndex++; //increase our index
 
+                //Loop while we have not got a new index (block to scale)
                 while (gotNewIndex == false)
                 {
                     bool foundValue = false;
@@ -76,6 +81,7 @@ public class BorderScalar : MonoBehaviour {
                 }
             }
 
+            //If any children are not scaled then set our bool to false and break out
             foreach (Transform child in childTransforms)
             {
                 if (child.localScale.x < 1)

@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * Author Daryl
+ * Description: Scale the object that the script is attached to.
+ */
 public class ScaleScript : MonoBehaviour
 {
     public float scaleSpeed = 0.03f;

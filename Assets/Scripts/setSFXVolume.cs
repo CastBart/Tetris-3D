@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * Author David
+ * Description: Sets volume of sound effects depending on slider
+ */ 
 public class setSFXVolume : MonoBehaviour
 {
     public AudioSource sfx;

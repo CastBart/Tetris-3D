@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+/*
+ * Author Daryl-Bart
+ * Description: Creates a score text that displays the newly added score that fades away and move up over time
+ */
+
 public class ScoreFade : MonoBehaviour {
 
     Color textColor;

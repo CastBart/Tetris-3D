@@ -4,6 +4,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 
+/*
+ * Author(s): Bart, David & Daryl.
+ * Description: This is where our score is held and handles the overall game loop. We end the game in here and also restart it from here.
+ * We update the score and lines text in this script. We also handle the pregame screen inside of here
+ */
+
 public class GameControllerScript : MonoBehaviour {
 
     public static int score = 0;
@@ -111,6 +117,7 @@ public class GameControllerScript : MonoBehaviour {
       
 	}
 
+    //Pops off the currently full line and adds an explosion like force to each block on that line, we then set the scale down bool to true to scale them down and off the screen.
     void deleteLine()
     {
         lineComplete.Stop();

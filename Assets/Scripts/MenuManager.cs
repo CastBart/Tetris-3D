@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
+/*
+ * Author Daryl
+ * Description: Handles the main menu buttons, by moving them at certain times and into the correct positions
+ */
 public class MenuManager : MonoBehaviour
 {
-    public GameObject[] PreGamebuttons;
-    public Vector3[] startPositions;
-    public Vector3[] endPositions;
-    public Vector3[] levelColours;
-    public Material bgMaterial;
+    public GameObject[] PreGamebuttons; //our pregame buttons (Level 1, Level 2)
+    public Vector3[] startPositions; // the start positions of the ui elements
+    public Vector3[] endPositions; //the positions our menu elements should be at when the game starts up
+    public Vector3[] levelColours; //the colour sof our levels (blue + red)
+    public Material bgMaterial; //the material on our background plane
     bool startLevel; //bool to hold whether to start the level or not
-    Vector3 chosenLevelColour;
-    string levelChosenName;
+    Vector3 chosenLevelColour; //the colour of the chosen level
+    string levelChosenName; //the name of the level chosen
 
     public GameObject[] mainMenubuttons;
     public Vector3[] initialisePositions;
@@ -49,11 +53,14 @@ public class MenuManager : MonoBehaviour
 
         }
 
+        //If we start the level
         if(startLevel)
         {
+            //Get the current colour of the background and lerp it to the colour of the level we have chosen, (so change our background colour to red or blue)
             var newColour = Vector3.Lerp(new Vector3(bgMaterial.color.r, bgMaterial.color.g, bgMaterial.color.b), chosenLevelColour, 0.05f);
             bgMaterial.color = new Color(newColour.x, newColour.y, newColour.z, 1);
 
+            //If the distance between the two colours is minimal then change the scene
             if(Vector3.Distance(newColour, chosenLevelColour) <= 0.01f)
             {
                 SceneManager.LoadScene(levelChosenName);
@@ -61,11 +68,13 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    //This is called when we press the play button
     public void EnableLevelSelectButtons()
     {
         MoveButtons(endPositions);
     }
 
+    //This is called when we are in the pregame screen and we press the back button
     public void DisableLevelSelectButtons()
     {
         MoveButtons(startPositions);
@@ -78,6 +87,7 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    // This sets our parameters to go to level 1
     public void GoToLevel1()
     {
         levelChosenName = "main"; //selecting level 1
@@ -96,6 +106,7 @@ public class MenuManager : MonoBehaviour
         startLevel = true;
     }
 
+    // This sets our parameters to go to level 2
     public void GoToLevel2()
     {
         levelChosenName = "level2"; //selecting level 2

@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author Bartosz
+ * Descrption: Destroy our bomb particle effect when it is completed
+ */ 
+
 public class DieAfterTime : MonoBehaviour {
 
     ParticleSystem ps;

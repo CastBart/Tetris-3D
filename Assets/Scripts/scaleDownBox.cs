@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * Author Daryl
+ * Description: This script is used to scale down any boxes that have this script attached to it when the game is over.
+ */
 public class scaleDownBox : MonoBehaviour {
 
     bool scaleDown;
@@ -16,8 +21,10 @@ public class scaleDownBox : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        //If our bool is true or th egame is over, then scale down our gameobject
 		if(scaleDown || GameControllerScript.gameOver)
         {
+            //Lerps our localscale
             transform.localScale = Vector3.Lerp(transform.localScale, scaleDesired, 0.1f);
 
             if (Vector3.Distance(transform.localScale, scaleDesired) <= 0.05f)

@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/*
+ * Author: David
+ * Description: This is script is used to avoid the object asscociated with this script to not be destroyed when changing scenes
+ */
+
 public class DontDestroyOnLoad : MonoBehaviour
 {
 

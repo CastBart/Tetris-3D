@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * Author Bartosz
+ * Description: Deletes all instances of clones if not used
+ */ 
 public class DeleteBlock : MonoBehaviour {
 
 
 
 
-	// Use this for initialization
-	void Start ()
-    {
-		
-	}
+	
 	
 	// Update is called once per frame
 	void Update ()

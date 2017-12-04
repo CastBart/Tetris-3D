@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
+/*
+ * Author David
+ * Description: Sets pitch of game music depending on the level
+ */
 public class setMusicVolume : MonoBehaviour {
     public AudioSource music;
     Scene scene;

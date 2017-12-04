@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
+/*
+ * Autho(s) Bartek, Daryl & David 
+ * Description: Moves blocks down,
+ *             Creates new block if a block is stoped
+ *             Handles block movement right and left or rotate
+ */ 
+
 public class Blocks : MonoBehaviour {
     public static float lastFall = 0;
     public bool scaled;
@@ -15,7 +22,7 @@ public class Blocks : MonoBehaviour {
     float timeToNextMoveH;
     // time since last move
     float timeSinceLastMove;
-    // Use this for initialization
+  
 
 
     void Start ()

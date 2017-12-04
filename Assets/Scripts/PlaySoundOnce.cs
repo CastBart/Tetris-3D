@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * Author David
+ * Description: Plays a sound just once when an action is performed. ie move block down,left,right or rotate.
+ */
+
 public class PlaySoundOnce : MonoBehaviour
 {
     float lastFall = 0;

@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/*
+ * Author(s); Daryl & David
+ * Description: Handles buttons presses/navigation
+ */
+
 public class ButtonManager : MonoBehaviour
 {
     //pause bool called anywhere

@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * Author Daryl
+ * Description: This script is used to make the camera move to the position: gamePos during the game. This position
+ * is set elsewhere (in the button manager)
+ */
 public class CameraScript : MonoBehaviour {
 
     Vector3 pausedPos; //the position our camera should go to when paused

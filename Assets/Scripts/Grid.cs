@@ -128,9 +128,9 @@ public class Grid : MonoBehaviour {
                 deleteRow(y);
                 decreaseRowsAbove(y + 1);
                 --y;
-                Grid.lines++;
-                Grid.tempScore += 80;
-                GameControllerScript.score += 80;
+                GameControllerScript.lines++;
+                Grid.lines += 1;
+                Grid.tempScore += 100;
             }
         }
     }

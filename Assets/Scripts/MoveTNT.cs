@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
+/*
+ * Author Bartek
+ * Description: Moves The bomb down. The bomb stops when it reaches another block or hits the bottom of the grid
+ */
+
 public class MoveTNT : MonoBehaviour {
 
     // Use this for initialization
@@ -22,7 +27,7 @@ public class MoveTNT : MonoBehaviour {
     void Start()
     {
         destroy = false;
-            move = true;
+        move = true;
        // scaled = false;
 
         timeToNextMove = 0.25f;
@@ -39,8 +44,7 @@ public class MoveTNT : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-       // if (scaled)
-       // {
+     
         Debug.Log(Blocks.timeToFall);
 
         // Move Downwards and Fall
@@ -63,15 +67,11 @@ public class MoveTNT : MonoBehaviour {
                     // It's not valid. revert.
                     transform.position += new Vector3(0, 1, 0);
 
-                    // Clear filled horizontal lines
-                    // Grid.deleteFullRows();
-
+               
                     // Spawn next Group
                     FindObjectOfType<BlockCreator>().createBlock();
 
 
-                    // Disable script
-                    //  enabled = false;
                     move = false;
                     FindObjectOfType<TNTCreator>().setStopped(true);
                     GetComponent<BoxCollider>().enabled = true;
@@ -80,14 +80,19 @@ public class MoveTNT : MonoBehaviour {
                 timeSinceLastMove = Time.time;
             }
         }
+        //destroy this object when this bool is true and instantiate a particle effect
         if(destroy)
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-       // }
+
     }
 
+    /// <summary>
+    /// checks if a the next grid is valid
+    /// </summary>
+    /// <returns></returns>
     bool validGrid()
     {
         Vector3 v = Grid.roundVec3(transform.position);
@@ -99,21 +104,12 @@ public class MoveTNT : MonoBehaviour {
             return false;
         }
             
-        //foreach (Transform child in transform)
-        //{
-        //Vector3 v = Grid.roundVec3(child.position);
-        // if (!Grid.insideBorder(v))
-        //return false;
-
-        //if (Grid.grid[(int)v.x, (int)v.y] != null &&
-        //  Grid.grid[(int)v.x, (int)v.y].parent != transform)
-        // return false;
-        //}
+        
         return true;
     }
 
   
-
+    //updates grid 
     void updateGrid()
     {
         for (int y = 0; y < Grid.height; ++y)
@@ -131,13 +127,13 @@ public class MoveTNT : MonoBehaviour {
         }
         Vector2 v = Grid.roundVec3(transform.position);
         Grid.grid[(int)v.x, (int)v.y] = transform;
-       // foreach (Transform child in transform)
-      //  {
-       //     Vector2 v = Grid.roundVec3(child.position);
-      //      Grid.grid[(int)v.x, (int)v.y] = child;
-      //  }
+      
     }
 
+    /// <summary>
+    /// destroy all block object that the tnt is collided with
+    /// </summary>
+    /// <param name="collision"></param>
     void OnTriggerEnter(Collider collision)
     {
 

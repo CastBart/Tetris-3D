@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+/*
+ * Author David
+ * Description: Makes the slider equal to the music volume at start
+ */
 public class SliderScrip : MonoBehaviour {
 
 	// Use this for initialization
